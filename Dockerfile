@@ -1,8 +1,9 @@
 FROM alpine:3.18.2
 
-LABEL maintainer="Amin Vakil <info@aminvakil.com>"
+LABEL maintainer="jie.wan <webmaster@wanjie.info>"
 
 ENV OC_VERSION=1.1.7
+ENV TIMEZONE="Asia/Shanghai"
 
 RUN apk add --no-cache bash
 
@@ -21,13 +22,16 @@ RUN buildDeps=( \
 		lz4-dev \
 		make \
 		readline-dev \
+		tzdata \
 		tar \
 		xz \
 	); \
 	set -x \
 	&& apk add --update --virtual .build-deps "${buildDeps[@]}" \
-	&& curl -SL --connect-timeout 8 --max-time 120 --retry 128 --retry-delay 5 "ftp://ftp.infradead.org/pub/ocserv/ocserv-$OC_VERSION.tar.xz" -o ocserv.tar.xz \
+	&& curl -SL --connect-timeout 8 --max-time 120 --retry 128 --retry-delay 5 "https://www.infradead.org/ocserv/download/ocserv-$OC_VERSION.tar.xz" -o ocserv.tar.xz \
 	&& mkdir -p /usr/src/ocserv \
+	&& cp -rfv  /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+	&& echo ${TIMEZONE} > /etc/timezone \
 	&& tar -xf ocserv.tar.xz -C /usr/src/ocserv --strip-components=1 \
 	&& rm ocserv.tar.xz* \
 	&& cd /usr/src/ocserv \

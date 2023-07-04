@@ -1,6 +1,16 @@
 # docker-ocserv
 
-docker-ocserv is an OpenConnect VPN Server boxed in a Docker image built by [Tommy Lau](mailto:tommy@gen-new.com) currently maintained by [Amin Vakil](mailto:info@aminvakil.com).
+docker-ocserv is an OpenConnect VPN Server boxed in a Docker image built by [Tommy Lau](mailto:tommy@gen-new.com) currently maintained by [Amin Vakil](mailto:info@aminvakil.com) and [jie.wan](mailto:webmaster@wanjie.info).
+
+## Update on Jul 03, 2023
+
+**Docker images are now tagged!**
+
+You can stick to a specific `ocserv` version like `cnrock/ocserv:1.1.7`, so you can get bugfixes, security patches and alpine version bumps, and be sure that your ocserv version always remains the same.
+
+You can also bump each `ocserv` minor update manually using something like `1.1.7-2` and so on.
+
+Latest tags can always be found [here](https://github.com/cnrock/docker-ocserv/tags) and [here](cnrock/ocserv).
 
 ## Update on Sep 04, 2021
 
